@@ -1,4 +1,11 @@
 BssFirstApp::Application.routes.draw do
+  class Rails::InfoController < ActionController::Base
+    def properties
+        render :inline => Rails::Info.to_html
+    end
+  end
+
+  match '/rails/info/properties' => 'Rails::Info#properties'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -11,7 +18,7 @@ BssFirstApp::Application.routes.draw do
   # This route can be invoked with purchase_url(:id => product.id)
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+    resources :products
 
   # Sample resource route with options:
   #   resources :products do
